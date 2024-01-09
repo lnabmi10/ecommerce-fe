@@ -4,6 +4,11 @@
   box-sizing: border-box;
 
 }
+:root{
+  --color-1: #131921;
+  --color-2 : #3b4149;
+
+}
 body{
   font-family: 'Rubik', sans-serif;
 }
@@ -11,3 +16,14 @@ a{
   text-decoration: none;
   display: inline-block;
 }
+
+/* header part */ 
+
+.header-top-strip{
+  border-bottom: 1px solid var(--color-2) ;
+  background-color: var(--color-1) ;
+}
+.header-upper{
+  background-color: var(--color-1);
+}
+/* header part end */
