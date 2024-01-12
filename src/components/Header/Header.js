@@ -1,10 +1,12 @@
 import React from 'react'
+import './Header.css'
 import {Link,NavLink} from 'react-router-dom'
 import { BsSearch } from 'react-icons/bs';
-import compare from '../images/images/compare.svg'
-import wishlistSvg from '../images/images/wishlist.svg'
-import cartSvg from '../images/images/cart.svg'
-import userSvg from '../images/images/user.svg'
+import compare from '../../images/images/compare.svg'
+import wishlistSvg from '../../images/images/wishlist.svg'
+import cartSvg from '../../images/images/cart.svg'
+import userSvg from '../../images/images/user.svg'
+import menuSvg from '../../images/images/menu.svg'
 
 
 
@@ -33,7 +35,7 @@ const Header = () => {
       <div className='container'>
         <div className='row align-items-center'>
           <div className='col-4'>
-            <h2> <Link className='text-white'> SIJILmassa</Link></h2>
+            <h2> <Link className='sijilmassa text-white'> SIJILmassa</Link></h2>
           </div>
           <div className='col-3'>
             <div className="input-group ">
@@ -79,12 +81,24 @@ const Header = () => {
 
       </div>
     </header>
-    <header className='header-bottom'>
+    <header className='header-bottom py-1'>
       <div className='container'>
         <div className='row'>
           <div className='col-12'>
-            <div className='menu-bottom d-flex align-items-center'>
-              <div></div>
+            <div className='menu-bottom d-flex align-items-center gap-30'>
+              <div>
+              <div className="dropdown ">
+                     <button className="btn btn-secondary dropdown-toggle bg-transparent border-0 d-flex gap-15 align-items-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src={menuSvg} /> <span>categories</span>  
+                     </button>
+                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                          <li><Link className="dropdown-item text-white" to="#">Action</Link></li>
+                                          <li><Link className="dropdown-item text-white" to="#">Another action</Link></li>
+                                          <li><Link className="dropdown-item text-white" to="#">Something else here</Link></li>
+                     </ul>
+              </div>
+                
+              </div>
               <div className='menu-links'>
                 <div className='d-flex align-items-center gap-15 m-2'>
                   <NavLink className='text-white' to='/' >Home</NavLink>
