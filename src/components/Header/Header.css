@@ -1,4 +1,9 @@
+:root{
+  --color-1: #131921;
+  --color-2 : #3b4149;
+  --color-3 : #febd69;
 
+}
 .header-top-strip{
     border-bottom: 1px solid var(--color-2) ;
     background-color: var(--color-1) ;
