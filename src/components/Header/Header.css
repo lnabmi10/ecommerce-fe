@@ -18,6 +18,10 @@
     box-shadow: none;
     border-color: inherit;
   }
+  .header-upper .container .row h2 .sijilmassa{
+    font-weight: 400;
+
+  }
   .header-upper .container .row h2 .sijilmassa:hover{
     color: var(--color-3) !important ;
 

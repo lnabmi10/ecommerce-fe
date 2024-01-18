@@ -1,0 +1,21 @@
+:root{
+    --color-6:#232f3e;
+  --color-1: #131921;
+  --color-3 : #febd69;
+
+}
+
+.buttonStyle{
+background-color: var(--color-6);
+color: white;
+font-size: 15px;
+padding: 10px 30px;
+border-radius: 25px;
+font-weight: 400;
+text-transform: uppercase;
+}
+.buttonStyle:hover{
+    background-color: var(--color-3);
+    color: var(--color-1);
+
+}

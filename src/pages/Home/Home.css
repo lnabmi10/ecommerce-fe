@@ -1,0 +1,32 @@
+.main-banner-content{
+    top : 15%;
+    left:15%;
+
+}
+:root{
+    --color-5:#bf4800;
+}
+.main-banner-content h4{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin : 0 0 12px;
+    letter-spacing: 0.3px;
+    color: var(--color-5);
+    text-transform: uppercase;
+
+}
+.main-banner-content h5{
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 44px;
+    letter-spacing: -2px;
+    text-transform: none;
+    padding: 0;
+}
+.main-banner-content p{
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.4px;
+    color: var(--color-1);
+}
