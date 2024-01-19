@@ -35,3 +35,9 @@
 .home-wrapper-2{
     background-color: var(--color-7);
 }
+.categories{
+    background-color: white;
+    box-shadow: 0 0 10px #0000001a;
+    padding: 15px;
+    gap: 10px;
+}
