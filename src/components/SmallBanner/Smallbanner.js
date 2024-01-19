@@ -6,7 +6,7 @@ function Smallbanner(props) {
    const {description,name,price,imageSrc }=props
   return (
     <>
-        <div className={style.smallbanner + ' small-banner position-relative p-3'}>
+        <div className={style.smallbanner + ' small-banner position-relative p-1'}>
               <img src={imageSrc} className='img-fluid rounded-3'  alt="small-banner" />
               <div className={style.smallbannercontent + ' position-absolute'} >
               <h4>{description}</h4>
