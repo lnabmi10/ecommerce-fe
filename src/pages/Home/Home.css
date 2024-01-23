@@ -41,3 +41,24 @@
     padding: 15px;
     gap: 10px;
 }
+.card-wrapper{
+    background-color: white;
+    box-shadow: 0 0 10px #0000001a;
+    padding: 15px;
+    color: black;
+
+}
+.gap14{
+    gap: 14px;
+}
+.blog-heading{
+    margin-bottom: 10px;
+}
+.blog-heading h3, .blog-heading span{
+    color: var(--color-1)  ;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 32px;
+    
+    
+}

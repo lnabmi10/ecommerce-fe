@@ -1,11 +1,19 @@
 import React from 'react'
 import mainBanner1Img from '../../images/images/main-banner-1.jpg'
 import './Home.css'
+import Marquee from 'react-fast-marquee'
+import { Link } from 'react-router-dom'
+
+
 // COMPONENET
 import Button from '../../components/Button/Button'
 import Smallbanner from '../../components/SmallBanner/Smallbanner'
 import Servicecard from '../../components/ServiceCard/Servicecard'
 import Categorycard from '../../components/CategoryCard/Categorycard'
+import Branditem from '../../components/BrandItem/Branditem'
+import Blogcard from '../../components/Blogcard/Blogcard'
+
+
 
 // Import images
 import catbanner01 from '../../images/images/catbanner-01.jpg'
@@ -22,6 +30,15 @@ import tvImg from '../../images/images/tv.jpg'
 import watchImg from '../../images/images/watch.jpg'
 import tabImg from '../../images/images/tab1.jpg'
 import speakerImg from '../../images/images/speaker.jpg'
+import brand01 from '../../images/images/brand-01.png'
+import brand02 from '../../images/images/brand-02.png'
+import brand03 from '../../images/images/brand-03.png'
+import brand04 from '../../images/images/brand-04.png'
+import brand05 from '../../images/images/brand-05.png'
+import brand06 from '../../images/images/brand-06.png'
+import brand07 from '../../images/images/brand-07.png'
+import brand08 from '../../images/images/brand-08.png'
+import blog1 from '../../images/images/blog-1.jpg'
 
 
 function Home() {
@@ -95,6 +112,50 @@ function Home() {
             </div>
 
           </div>
+        </div>
+      </div>
+
+    </section>
+    <secttion className='marque-wrapper py-5'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-12'>
+            <div className='marque-inner-wrapper card-wrapper'>
+              <Marquee className='d-flex gap14'>
+               <Branditem brandImg={brand01} />
+               <Branditem brandImg={brand02} />
+               <Branditem brandImg={brand03} />
+               <Branditem brandImg={brand04} />
+               <Branditem brandImg={brand05} />
+               <Branditem brandImg={brand06} />
+               <Branditem brandImg={brand07} />
+               <Branditem brandImg={brand08} />
+              </Marquee>
+
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+
+    </secttion>
+    <section className='blog-wrapper py-5'>
+      <div className='container'>
+        
+        <div >
+          <div className='col-12 pb-2'>
+            <div className='blog-heading d-flex justify-content-between'> <h3>Our Latest News</h3> <span> <Link to='/' className='text-dark px-5' >...</Link>  </span> </div>
+          </div>
+          <div className='row'>
+            <Blogcard blogImg={blog1} blogTitle='A beautiful Sunday' blogDate='23 jan, 2024 ' blogDesc='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, praesentium nemo? Cumque iure eligendi  inventore assumenda quam , vel maxime.' />
+            <Blogcard blogImg={blog1} blogTitle='A beautiful Sunday' blogDate='23 jan, 2024 ' blogDesc='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, praesentium nemo? Cumque iure eligendi  inventore assumenda quam , vel maxime.' />
+            <Blogcard blogImg={blog1} blogTitle='A beautiful Sunday' blogDate='23 jan, 2024 ' blogDesc='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, praesentium nemo? Cumque iure eligendi  inventore assumenda quam , vel maxime.' />
+            <Blogcard blogImg={blog1} blogTitle='A beautiful Sunday' blogDate='23 jan, 2024 ' blogDesc='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, praesentium nemo? Cumque iure eligendi  inventore assumenda quam , vel maxime.' />
+          </div>
+
+          
+          
         </div>
       </div>
 

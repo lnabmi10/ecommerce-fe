@@ -1,0 +1,33 @@
+
+.blogStyle{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.blogCardStyle{
+
+}
+.blogImgStyle{
+    border-top-right-radius: 10px ;
+    border-top-left-radius: 10px ;
+}
+.blogContentStyle{
+    
+}
+.blogDateStyle{
+    font-size: 13px;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    font-weight: 400;
+    padding: 0;
+    color: #777;
+}
+.blogTitleStyle{
+    font-size: 18px;
+    color: black;
+}
+.blogContentStyle{
+    font-size: 13px;
+    line-height: 24px;
+    color: #777;
+}
