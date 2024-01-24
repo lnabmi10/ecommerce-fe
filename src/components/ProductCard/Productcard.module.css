@@ -1,0 +1,23 @@
+
+.productCardStyle{
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.productBrandStyle{
+    color:var(--color-5) ;
+    font-size: 13px;
+}
+
+.productTitleStyle{
+    font-size: 15px;
+    color: var(--color-8);
+}
+.productPriceStyle{
+    font-size: 16px;
+    color:var(--color-8);
+}
+.productActionBar{
+    
+}

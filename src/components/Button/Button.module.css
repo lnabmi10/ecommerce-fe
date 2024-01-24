@@ -1,9 +1,3 @@
-:root{
-    --color-6:#232f3e;
-  --color-1: #131921;
-  --color-3 : #febd69;
-
-}
 
 .buttonStyle{
 background-color: var(--color-6);
