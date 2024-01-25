@@ -13,6 +13,8 @@ import Categorycard from '../../components/CategoryCard/Categorycard'
 import Branditem from '../../components/BrandItem/Branditem'
 import Blogcard from '../../components/Blogcard/Blogcard'
 import Productcard from '../../components/ProductCard/Productcard'
+import Sdiscountcard from '../../components/SepecialDiscountCard/Sdiscountcard'
+
 
 
 
@@ -118,6 +120,54 @@ function Home() {
       </div>
 
     </section>
+    <section className='septial-discount py-5'>
+      <div className='container'>
+  
+          <div className='row'>
+          <div className='col-12 pb-2'>
+            <div className='blog-heading d-flex justify-content-between'> <h3>Top Discount</h3> <span> <Link to='/' className='text-dark px-5' >...</Link>  </span> </div>
+          </div>
+          <div className='row'>
+            <Sdiscountcard/>
+            <Sdiscountcard/>
+            <Sdiscountcard/>
+
+          </div>
+
+
+
+
+        </div>
+        
+
+        
+
+      </div>
+    </section>
+    <section className='product-wrapper py-5'>
+      <div className='container'>
+        
+        
+          
+          <div className='row'>
+          <div className='col-12 pb-2'>
+            <div className='blog-heading d-flex justify-content-between'> <h3>Top Collection</h3> <span> <Link to='/' className='text-dark px-5' >...</Link>  </span> </div>
+          </div>
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            
+            
+          </div>
+
+          
+        
+      </div>
+
+    </section>
     <section className='marque-wrapper py-5'>
       <div className='container'>
         <div className='row'>
@@ -142,38 +192,14 @@ function Home() {
       </div>
 
     </section>
+    
     <section className='blog-wrapper py-5'>
       <div className='container'>
         
-        <div >
-          <div className='col-12 pb-2'>
-            <div className='blog-heading d-flex justify-content-between'> <h3>Top Collection</h3> <span> <Link to='/' className='text-dark px-5' >...</Link>  </span> </div>
-          </div>
           <div className='row'>
-            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
-            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
-            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
-            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
-            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
-            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
-            
-            
-          </div>
-
-          
-          
-        </div>
-      </div>
-
-    </section>
-    <section className='blog-wrapper py-5'>
-      <div className='container'>
-        
-        <div >
           <div className='col-12 pb-2'>
             <div className='blog-heading d-flex justify-content-between'> <h3>Our Latest Blog</h3> <span> <Link to='/' className='text-dark px-5' >...</Link>  </span> </div>
           </div>
-          <div className='row'>
             <Blogcard blogImg={blog1} blogTitle='A beautiful Sunday' blogDate='23 jan, 2024 ' blogDesc='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, praesentium nemo? Cumque iure eligendi  inventore assumenda quam , vel maxime.' />
             <Blogcard blogImg={blog1} blogTitle='A beautiful Sunday' blogDate='23 jan, 2024 ' blogDesc='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, praesentium nemo? Cumque iure eligendi  inventore assumenda quam , vel maxime.' />
             <Blogcard blogImg={blog1} blogTitle='A beautiful Sunday' blogDate='23 jan, 2024 ' blogDesc='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, praesentium nemo? Cumque iure eligendi  inventore assumenda quam , vel maxime.' />
@@ -181,8 +207,6 @@ function Home() {
           </div>
 
           
-          
-        </div>
       </div>
 
     </section>

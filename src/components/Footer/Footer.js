@@ -109,11 +109,11 @@ const Footer = () => {
               </p>
               <div className='donlowadButton d-flex gap-15'>
                 <div className='appstore-download'>
-                <button type="button" className="btn btn-light"> <div></div> <BsApple className='app-store-icon' /> <span> Download on the <br/> <h6>App Store</h6> </span> </button>
+                <button type="button" className="btn btn-light"> <div></div> <BsApple className='app-store-icon' /> <span> Download on<h6>the App Store</h6> </span> </button>
 
                 </div>
                 <div className='playstore-download' >
-                <button type="button" className="btn btn-light"> <BsGooglePlay/><span> Get it ob <br/> <h6>Google play</h6> </span> </button>
+                <button type="button" className="btn btn-light"> <BsGooglePlay/><span> Get it on  <h6>Google play</h6> </span> </button>
                 </div>
               </div>
 

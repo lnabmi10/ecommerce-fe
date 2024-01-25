@@ -3,8 +3,16 @@
     padding: 15px;
     background-color: white;
     border-radius: 10px;
+    overflow: hidden;
 }
-
+.productCardStyle:hover .productActionBar{
+    right: 4px;
+}
+.productActionBar{
+    top : 10%;
+    right: -20px;
+    transition: 0.3s;
+}
 .productBrandStyle{
     color:var(--color-5) ;
     font-size: 13px;
@@ -18,6 +26,40 @@
     font-size: 16px;
     color:var(--color-8);
 }
-.productActionBar{
+
+.productContainerImg{
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+}
+.productImg1Style{
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+   
+  }
+  .productContainerImg:hover .productImg1Style{
+    display: none;
+}
+.productContainerImg:hover .productImg2Style{
+    display: block;
+}
+
+.productImg2Style{
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    display: none;
+    width: 200px;
+
     
 }
+
+  .WishlistIconDiv{
+   position: absolute;
+   z-index: 100;
+   right: 6px;
+   top : 5% ;
+  }
