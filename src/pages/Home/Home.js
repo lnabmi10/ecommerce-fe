@@ -120,6 +120,30 @@ function Home() {
       </div>
 
     </section>
+    <section className='product-wrapper py-5'>
+      <div className='container'>
+        
+        
+          
+          <div className='row'>
+          <div className='col-12 pb-2'>
+            <div className='blog-heading d-flex justify-content-between'> <h3>Top Collection</h3> <span> <Link to='/' className='text-dark px-5' >...</Link>  </span> </div>
+          </div>
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+            
+            
+          </div>
+
+          
+        
+      </div>
+
+    </section>
     <section className='septial-discount py-5'>
       <div className='container'>
   
@@ -144,17 +168,26 @@ function Home() {
 
       </div>
     </section>
-    <section className='product-wrapper py-5'>
+    <section className='popular-product py-5'>
       <div className='container'>
         
         
           
           <div className='row'>
           <div className='col-12 pb-2'>
-            <div className='blog-heading d-flex justify-content-between'> <h3>Top Collection</h3> <span> <Link to='/' className='text-dark px-5' >...</Link>  </span> </div>
+            <div className='blog-heading d-flex justify-content-between'> <h3>Polpular Products</h3> <span> <Link to='/' className='text-dark px-5' >...</Link>  </span> </div>
           </div>
-            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
-            <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
+          <div className='col-2' >
+            <div className='card' >
+              card1
+            </div>
+            </div>
+          <div className='col-2' >
+            <div className='card' >
+              card2
+            </div>
+            </div>
+
             <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
             <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
             <Productcard productImg={watchImg} productBrand='Havels' productTitle='Kids watch toolpack multi colored for student' productPrice='$100.00' />
