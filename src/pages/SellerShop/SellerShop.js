@@ -2,9 +2,10 @@ import React from 'react'
 import style from './SellerShop.module.css'
 import ReactStars from "react-rating-stars-component";
 import Button from '../../components/Button/Button'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import ShopProduct from '../../components/ShopProduct/ShopProduct';
+import ReviewShow from '../../components/ReviewShow/ReviewShow';
 
 
 function SellerShop() {
@@ -104,31 +105,140 @@ function SellerShop() {
             </div>
         </div>
         <div className='items-part py-4'>
-            <div className='container '>
+            <div className=''>
                 <div className='row' >
                     <div className='col-3'>
-                        items
+                        <div className='container'>
+                            <div className='d-flex align-items-center justify-content-between'>
+                                <div> <h5>ALL</h5> </div>
+                                <div>  55 </div>
+                            </div>
+                            <div className='container'>
+                                <div className='py-3 '> <Button> Request Custom Order</Button> </div>
+                                <div className='py-3'>  <Button> Contact shop Owner</Button>  </div>
+                                <div className='py-1'> <p  > <Link className='text-dark '> 22 Sales </Link> </p> </div>
+                                <div className='py-1'> <p  > <Link className='text-dark' > 50 Admirals </Link> </p> </div>
+                                <div className='py-1'> <p  > <Link className='text-dark' > Report this shop </Link> </p> </div>
+
+                            </div>
+                            
+                            
+                          
+                           
+                        </div>
+                        
                     </div>
-                    <div className='col-9 container'>
+                    <div className='col-9'>
+                        <div className='container d-flex align-items-center justify-content-between'>
+                            <div><h4 >Items</h4> </div>
+                            <div > Sorting </div>
+
+                        </div>
+                        <div className={style.gap4 +  '  container d-flex flex-wrap align-items-center'} >
+                        <ShopProduct/>
+                        <ShopProduct/>
+                        <ShopProduct/>
+                        <ShopProduct/>
+                        <ShopProduct/>
+                        <ShopProduct/>
+                        <ShopProduct/>
+                        <ShopProduct/>
                         <ShopProduct/>
                     </div>
+
+                    </div>
+                    
                 </div>
             </div>
 
         </div>
+        <hr/>
         <div className='reviews-part py-4'>
-            reviews
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-3'> <div><h4 >Reviews</h4> </div></div>
+                    <div className='col-9 container'>
+                        
+                        <div className=' container ' >
+                            <div className='row d-flex flex-wrap align-items-center justify-content-between  '>
+                                <div className=' col-7 d-flex flex-wrap align-items-center ' >
+                                                                        <p className='my-0 px-2'>Average item review</p> 
+                                                                        <ReactStars
+                                                                         count={5}
+                                                                         onChange={ratingChanged}
+                                                                         size={24}
+                                                                         activeColor="#ffd700"
+                                                                         value={5} 
+                                                                         edit={false}
+                                                                          /> 
+                            </div>
+                            <div className='col-3'> sort by : MostRecent </div>
+
+                            </div>
+                        
+                            
+                        </div>
+                        <div className='container'>
+                            <ReviewShow/>
+                            <ReviewShow/>
+                            <ReviewShow/>
+                            <ReviewShow/>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+           
 
         </div>
+        <hr/>
 
         <div className='About-part py-4'>
-            about
+        <div className='container'>
+                <div className='row'>
+                    <div className='col-3'> 
+                    <div className='d-flex flex-wrap align-items-center gap-15' ><h4 >About </h4> <h6> miniBrahim</h6> </div>
+                    <div><h6>on Sijilmassa since </h6> <h5> 2022</h5> </div>
+                    <div><h6>Sales </h6> <h5> 55</h5> </div>
+                    </div>
+                    <div className='col-9 container'>
+                        <p>
+                        miniBrahim was founded in 2015 and offers stunning artisan jewelry and accessories including statement jewelry, gifts for her and him, memorial jewelry, and family jewelry sets and accessories.
 
+                        Each piece is designed, assembled, stamped by hand, polished, and lovingly packaged for a wonderfully thoughtful gift that speaks to the heart.
+
+                        Statement jewelry gifts include personalized necklaces and bracelets, monogram necklaces, scriptural jewelry and gifts, custom keepsake gifts, and more 💗
+
+                        Memorial & Urn jewelry and accessories are created to memorialize babies born still and child angels. Each piece of jewelry and every accessory tells your story in a way that’s personal to you and your family.
+                        </p>
+                        
+                    </div>
+
+                </div>
+
+
+            </div>
+           
         </div>
+        <hr/>
 
         <div className='policies-part py-4'>
-            policies
+        <div className='container'>
+                <div className='row'>
+                    <div className='col-3'> <div><h4 >Shop policies</h4> </div>
+                    <div><p>Last updated on February 16, 2023</p></div></div>
+                    <div className='col-9 container'>
+                        
+                        
+                    </div>
 
+                </div>
+
+
+            </div>
         </div>
     </>
   )
