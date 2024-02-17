@@ -23,7 +23,7 @@ function SellerShop() {
                         <div className='col-6'> 
                         <div className='row'>
                             <div className='col-4'>
-                                <img src='' />
+                                <img src='' alt='' />
 
                             </div>
                             <div className='col-8'>
@@ -214,6 +214,73 @@ function SellerShop() {
 
                         Memorial & Urn jewelry and accessories are created to memorialize babies born still and child angels. Each piece of jewelry and every accessory tells your story in a way that’s personal to you and your family.
                         </p>
+                        <div className='row'> <div className='col-12 text-center' > <h5 > shop members </h5> </div> </div>
+                        <div className='row'>
+                            <div className='col-6 row ' > 
+                            <div className='imgMember col-3' >
+                                <img className='img-fluid' src='' alt='ownerer' />
+
+                            </div>
+                            <div className='dscMember col-9' >
+                                         <p>Carolyn 
+                                           <h6>Owner, Maker, Designer, Curator</h6> 
+                                    
+                                         </p>
+                                         <div>
+                                            <p>
+                                            Hello! I m Carolyn, the maker and devoted pet lover behind Thread and Paw. 
+                                            
+                                            I'm constantly inspired by the love of my own pup to create high quality
+                                             and one-of-a-kind pet goods for dog/cat lovers and their furry friends.
+                                            </p>
+                                         </div>
+
+                            </div>
+                            </div> 
+                            <div className='col-6 row ' > 
+                                     <div className='imgMember col-3' >
+                                        <img className='img-fluid' src='' alt='member' />
+
+                                     </div>
+                                     <div className='dscMember col-9' >
+                                         <p>Summer 
+                                           <h6>Assistant</h6> 
+                                    
+                                         </p>
+                                         <div>
+                                            <p>
+                                            Hello! My name is Summer and I help Laura out with packing orders, as well as clerical work and keeping the
+                                             office organized.
+                                             I love plants, cooking, and hanging out with my dog, Boston.
+                                            </p>
+                                         </div>
+
+
+                                     </div>
+                                     </div>   
+                                     <div className='col-6 row ' > 
+                                     <div className='imgMember col-3' >
+                                        <img className='img-fluid' src='' alt='member' />
+
+                                     </div>
+                                     <div className='dscMember col-9' >
+                                         <p>Laura 
+                                           <h6>Assistant</h6> 
+                                    
+                                         </p>
+                                         <div>
+                                            <p>
+                                            Hello! My name is Laura and I am the creator of Fluff Pet Care. Animals are everything to me, and I am so
+                                             grateful to have a small business dedicated to them. 
+                                            It's important to me that pets and their people have unique Boston.
+                                            </p>
+                                         </div>
+
+
+                                     </div>
+                                     </div>       
+                        </div>
+
                         
                     </div>
 
@@ -231,6 +298,28 @@ function SellerShop() {
                     <div className='col-3'> <div><h4 >Shop policies</h4> </div>
                     <div><p>Last updated on February 16, 2023</p></div></div>
                     <div className='col-9 container'>
+                        <div className='row' ><div className='col-3' > <h5>Returns & exchanges</h5> </div>
+                        <div className='col-9' >   <p>See item details for return and exchange eligibility.</p> 
+                        
+                        </div> </div>
+                        <hr/>
+                        <div className='row' ><div className='col-3' > <h5>Cancellations</h5> </div>
+                        <div className='col-9' >
+                        <p>Cancellations: not accepted </p>
+                        <p> Please contact the seller if you have any problems with your order.</p></div> </div>
+                        <hr/>
+                        <div className='row' ><div className='col-3' > <h5>Privacy</h5> </div>
+                        <div className='col-9' > <p> This Privacy Policy describes how and when I collect, use, and share 
+                            information when you purchase an item from me,  contact me, or otherwise use my services 
+                            through Etsy.com or its related sites and services..</p> 
+                            <p>
+                            This Privacy Policy does not apply to the practices of third parties that I do not own or control, 
+                            including Etsy or any third party services you access through Etsy. You can reference the Etsy Privacy
+                             Policy to learn more about its privacy practices.
+                            </p>
+                        </div> </div>
+                        <hr/>
+                        
                         
                         
                     </div>
