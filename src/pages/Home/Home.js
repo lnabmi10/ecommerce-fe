@@ -100,6 +100,9 @@ function Home() {
     <section className='home-wrapper-3 py-5'>
       <div className='container'>
         <div className='row'>
+        <div className='col-12 pb-2'>
+            <div className='blog-heading d-flex justify-content-between'> <h3>Categories</h3> <span> <Link to='/' className='text-dark px-5' >...</Link>  </span> </div>
+          </div>
           <div className='col-12'>
             <div className='categories d-flex flex-wrap align-items-center  justify-content-between '>
               <Categorycard catgoryImgSrc={cameraImg} categoryTitle='Cameras' categoryText='show items' />
@@ -118,6 +121,7 @@ function Home() {
           </div>
         </div>
       </div>
+
 
     </section>
     <section className='product-wrapper py-5'>
