@@ -1,5 +1,5 @@
 import React from 'react'
-import mainBanner1Img from '../../images/images/main-banner-1.jpg'
+import laptopmainBannerImg from '../../images/images/laptopmainbanner.png'
 import './Home.css'
 import Marquee from 'react-fast-marquee'
 import { Link } from 'react-router-dom'
@@ -54,7 +54,7 @@ function Home() {
         <div className='row'>
           <div className='col-6'>
             <div className='main-banner position-relative '>
-              <img src={mainBanner1Img} className='img-fluid rounded-3'  alt="main-banner" />
+              <img src={laptopmainBannerImg} className='img-fluid rounded-3'  alt="main-banner" />
               <div className='main-banner-content position-absolute'>
               <h4>MACBOOK FOR PROGRAMMING</h4>
               <h5>MacBook pro 14 </h5>
