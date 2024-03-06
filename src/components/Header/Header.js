@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.css'
 import {Link,NavLink} from 'react-router-dom'
-import { BsSearch } from 'react-icons/bs';
+import { BsSearch } from 'react-icons/bs'
 import compare from '../../images/images/compare.svg'
 import wishlistSvg from '../../images/images/wishlist.svg'
 import cartSvg from '../../images/images/cart.svg'
