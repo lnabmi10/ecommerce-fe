@@ -6,6 +6,10 @@ import { Link, NavLink } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import ShopProduct from '../../components/ShopProduct/ShopProduct';
 import ReviewShow from '../../components/ReviewShow/ReviewShow';
+import minibrImg from '../../images/images/miniBrahim.png'
+import shopOwner from '../../images/images/shopOwner.PNG'
+import shopMember from '../../images/images/shopMember.jpg'
+import shopmembers2 from '../../images/images/shopmembers2.PNG'
 
 
 function SellerShop() {
@@ -23,7 +27,7 @@ function SellerShop() {
                         <div className='col-6'> 
                         <div className='row'>
                             <div className='col-4'>
-                                <img src='' alt='' />
+                                <img src={minibrImg} alt='shop photo' />
 
                             </div>
                             <div className='col-8'>
@@ -66,7 +70,18 @@ function SellerShop() {
 
                     </div>
                 </div>
-                <div className='col-2'> test2</div>
+                <div className='col-2 '> 
+                <div className=''>
+                    <img src={shopOwner} className={style.memberImgdiv} />
+                </div>
+                <div className=''>
+                    <p>Carolyn 
+                     <h6>Owner, Maker, Designer, Curator</h6> 
+                      </p></div>
+
+
+                                          
+                </div>
             </div>
         </div>
         <div className='container py-4 mt-3 mx-4 shop-announcement' >
@@ -218,7 +233,7 @@ function SellerShop() {
                         <div className='row'>
                             <div className='col-6 row ' > 
                             <div className='imgMember col-3' >
-                                <img className='img-fluid' src='' alt='ownerer' />
+                                <img className={style.memberImgdiv} src={shopOwner} alt='ownerer' />
 
                             </div>
                             <div className='dscMember col-9' >
@@ -239,7 +254,7 @@ function SellerShop() {
                             </div> 
                             <div className='col-6 row ' > 
                                      <div className='imgMember col-3' >
-                                        <img className='img-fluid' src='' alt='member' />
+                                        <img className={style.memberImgdiv} src={shopmembers2} alt='member' />
 
                                      </div>
                                      <div className='dscMember col-9' >
@@ -260,7 +275,7 @@ function SellerShop() {
                                      </div>   
                                      <div className='col-6 row ' > 
                                      <div className='imgMember col-3' >
-                                        <img className='img-fluid' src='' alt='member' />
+                                        <img className={style.memberImgdiv} src={shopMember} alt='member' />
 
                                      </div>
                                      <div className='dscMember col-9' >
