@@ -2,3 +2,44 @@
     border-radius: 10px;
     max-height: 120px;
 }
+
+.statsCard{
+    border: 1px solid gray;
+}
+.textf37{
+    font-size: 30px; ;
+    font-weight: 700;
+}
+.textf15{
+    font-size: 15px; ;
+    font-weight: 500;
+}
+
+.textf26{
+    font-size: 20px; ;
+    font-weight: 600;
+}
+.textf14{
+    font-size: 10px; ;
+    font-weight: 400;
+    color: gray;
+}
+.orderCard{
+
+    border: 1px solid rgb(165, 164, 164);
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    height: 100px;
+}
+
+.orderCard:hover{
+    box-shadow: 6px 9px 10px 1px rgba(150,150,150,0.81);
+-webkit-box-shadow: 6px 9px 10px 1px rgba(150,150,150,0.81);
+-moz-box-shadow: 6px 9px 10px 1px rgba(150,150,150,0.81);
+cursor: pointer;
+}
+.listingsCard{
+    border: 1px solid rgb(165, 164, 164);
+
+}
