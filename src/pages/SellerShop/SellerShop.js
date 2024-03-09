@@ -255,7 +255,7 @@ function SellerShop() {
                             <div className='col-6 row ' > 
                                      <div className='imgMember col-3' >
                                         <img className={style.memberImgdiv} src={shopmembers2} alt='member' />
-
+<div>hello</div>
                                      </div>
                                      <div className='dscMember col-9' >
                                          <p>Summer 
