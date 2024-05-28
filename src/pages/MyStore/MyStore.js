@@ -185,7 +185,7 @@ function MyStore() {
       
                       </div>
        
-                      <div className='col-2'> <Link to='/' className='text-dark'>View detailed stats</Link> </div>
+                      <div className='col-2'> <Link to='/allshopproduct' className='text-dark'>View All Product</Link> </div>
                </div>
 
               </div>
