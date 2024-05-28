@@ -10,6 +10,8 @@ import SellerShop from './pages/SellerShop/SellerShop';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import AllShopProduct from './components/AllShopProduct/AllShopProduct';
+import ProductPage from './pages/ProductPage/ProductPage'
+import CreateProduct from './components/CreateProducte/CreateProduct';
 
 
 function App() {
@@ -26,6 +28,10 @@ function App() {
       <Route path='login' element={<Login/>} />
       <Route path='register' element={<Register/>} />
       <Route path='allshopproduct' element={ <AllShopProduct/> } />
+      <Route path="product/:id" element={<ProductPage/>} />
+      <Route path='create-product' element={ <CreateProduct/> } />
+      
+
 
       </Route>
     </Routes>
