@@ -59,7 +59,7 @@ const Header = () => {
                 </Link>
               </div>
               <div>
-                <Link  className='d-flex align-items-center gap-10 text-white'>
+                <Link  to='/login' className='d-flex align-items-center gap-10 text-white'>
                 <img src={userSvg} alt="user" />
                 <p className='mb-0'>Log in <br/> MyAccount</p>
                 </Link>
@@ -104,7 +104,7 @@ const Header = () => {
                   <NavLink className='text-white' to='/' >Home</NavLink>
                   <NavLink className='text-white' to='/mystore' >myStore</NavLink>
                   <NavLink className='text-white' to='/sellershop' >SellerShop</NavLink>
-                  <NavLink className='text-white' to='/' >Contact</NavLink>
+                  <NavLink className='text-white' to='/login' >Contact</NavLink>
                   <NavLink className='text-white' to='/' >Blog</NavLink>
                 </div>
               </div>

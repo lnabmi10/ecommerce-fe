@@ -7,6 +7,9 @@ import { About } from './components/About';
 import Contact from './components/Contact';
 import MyStore from './pages/MyStore/MyStore';
 import SellerShop from './pages/SellerShop/SellerShop';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
       <Route path='contact' element={<Contact/>}  />
       <Route path='mystore' element={<MyStore/>}  />
       <Route path='sellershop' element={<SellerShop/>}  />
+      <Route path='login' element={<Login/>} />
+      <Route path='register' element={<Register/>} />
+
       </Route>
     </Routes>
     </BrowserRouter>
