@@ -31,6 +31,7 @@ const loginfct = async ()=>{
     if (response.ok) {
       // Handle successful login (e.g., save token, redirect)
       console.log('Login successful:', data);
+      localStorage.setItem('token', data.token);
     } else {
       // Handle error
       setError(data.message || 'Login failed');
