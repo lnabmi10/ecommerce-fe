@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import style from '../Button/Button.module.css';
 
 function Register() {
@@ -11,6 +11,8 @@ function Register() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,8 +30,7 @@ function Register() {
     const data = await response.json();
 
     if (response.ok) {
-      // Handle successful registration (e.g., redirect to login)
-      console.log('Registration successful:', data);
+       navigate('/login');
     } else {
       // Handle error
       setError(data.message || 'Registration failed');

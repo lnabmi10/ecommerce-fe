@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import Button from '../Button/Button';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import style from '../Button/Button.module.css'
 
 
@@ -10,6 +10,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit =  (event) => {
     event.preventDefault();
@@ -28,10 +29,12 @@ const loginfct = async ()=>{
     console.log(password)
     const data = await response.json();
 
-    if (response.ok) {
-      // Handle successful login (e.g., save token, redirect)
-      console.log('Login successful:', data);
-      localStorage.setItem('token', data.token);
+  if (response.ok) {
+      
+        const token = data.token;
+        localStorage.setItem('token', token);
+        navigate('/');
+      
     } else {
       // Handle error
       setError(data.message || 'Login failed');
