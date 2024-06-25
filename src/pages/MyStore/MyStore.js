@@ -17,52 +17,64 @@ import { BsStar } from "react-icons/bs";
 import { BsMegaphone } from "react-icons/bs";
 
 
-function MyStore() {
-
+const MyStore = () => {
   const [user, setUser] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
   const [store, setStore] = useState(null);
+  const [identityCardUploaded, setIdentityCardUploaded] = useState(false);
+  const [loading, setLoading] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        navigate('/login');
-        return;
-      }
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    } else {
+      fetchUserData(token);
+     
+        
+    }
+  }, []);
 
-      try {
-        const userResponse = await fetch('http://localhost:3001/api/user/connecterdUser', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const userData = await userResponse.json();
-        setUser(userData);
-
-        const bankResponse = await fetch('http://localhost:3001/api/bankinfo/getbankdetails', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+  const fetchUserData = async (token) => {
+    try {
+      // Fetch user data
+      const userResponse = await fetch('http://localhost:3001/api/user/connecterdUser', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const userData = await userResponse.json();
+      setUser(userData);
+      console.log("userData",userData)
+      console.log("user",user)
+      // Fetch bank details
+      const bankResponse = await fetch('http://localhost:3001/api/bankinfo/getbankdetails', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (bankResponse.ok) {
         const bankData = await bankResponse.json();
         setBankDetails(bankData);
+        console.log("bankData",bankData)
+      console.log("bank",bankDetails)
+      }
+      
 
-        if (!bankData) {
-          navigate('/my-account');
-          return;
-        }
-
-        const storeResponse = await fetch('http://localhost:3001/api/shop/getyourshop', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+      // Fetch store details
+      const storeResponse = await fetch('http://localhost:3001/api/shop/getyourshop', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (storeResponse.ok) {
         const storeData = await storeResponse.json();
         setStore(storeData);
-
-      } catch (error) {
-        console.error(error);
+        
+        console.log("storeData",storeData)
+      console.log("store",store)
       }
-    };
+      setLoading(true);
 
-    fetchUserData();
-  }, [navigate]);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } 
+  };
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
@@ -71,25 +83,31 @@ function MyStore() {
 
     try {
       const token = localStorage.getItem('token');
-      await fetch('http://localhost:3001/api/seller/becomeseller', {
+      const response = await fetch('http://localhost:3001/api/seller/becomeseller', {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
       });
-      alert('Identity card uploaded successfully');
+
+      if (response.ok) {
+        setIdentityCardUploaded(true);
+        alert('Identity card uploaded successfully');
+      } else {
+        alert('Failed to upload identity card');
+      }
     } catch (error) {
-      console.error(error);
-      alert('Failed to upload identity card');
+      console.error('Error uploading file:', error);
+      alert('An error occurred while uploading the identity card');
     }
   };
 
   const handleCreateStore = async (e) => {
     e.preventDefault();
-    const { storeName, storeDescription } = e.target.elements;
-    
+    const { storeName, storeDescription, storeBrand, storeCategory } = e.target.elements;
+
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/api/shop/createshop', {
+      const response = await fetch('http://localhost:3001/api/shop/createshop', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -98,6 +116,8 @@ function MyStore() {
         body: JSON.stringify({
           name: storeName.value,
           description: storeDescription.value,
+          brand: storeBrand.value,
+          category: storeCategory.value,
         }),
       });
 
@@ -109,26 +129,27 @@ function MyStore() {
         alert('Failed to create store');
       }
     } catch (error) {
-      console.error(error);
+      console.error('Error creating store:', error);
       alert('An error occurred while creating the store');
     }
   };
 
-  if (!user) {
+  /*if (loading) {
     return <p>Loading...</p>;
-  }
+  }*/
+  
+    
 
-  if (!bankDetails) {
-    navigate('/my-account');
-    return null;
-  }
-
+      
+  
   if (store) {
     return (
       <div>
         <h2>My Store</h2>
-        <p>Name: {store.name}</p>
+        <p>Name: {store.shopName}</p>
         <p>Description: {store.description}</p>
+        <p>Brand: {store.brand}</p>
+        <p>Category: {store.category}</p>
         {/* Add more store details here */}
       </div>
     );
@@ -137,16 +158,23 @@ function MyStore() {
   return (
     <div>
       <h2>Become a Seller</h2>
-      <p>To become a seller, please upload your identity card.</p>
-      <input type="file" onChange={handleFileUpload} />
-      <form onSubmit={handleCreateStore}>
-        <h3>Create Your Store</h3>
-        <input type="text" name="storeName" placeholder="Store Name" required />
-        <textarea name="storeDescription" placeholder="Store Description" required />
-        <button type="submit">Create Store</button>
-      </form>
+      {identityCardUploaded ? (
+        <form onSubmit={handleCreateStore}>
+          <h3>Create Your Store</h3>
+          <input type="text" name="storeName" placeholder="Store Name" required />
+          <textarea name="storeDescription" placeholder="Store Description" required />
+          <input type="text" name="storeBrand" placeholder="Store Brand" />
+          <input type="text" name="storeCategory" placeholder="Store Category" />
+          <button type="submit">Create Store</button>
+        </form>
+      ) : (
+        <>
+          <p>To become a seller, please upload your identity card.</p>
+          <input type="file" onChange={handleFileUpload} />
+        </>
+      )}
     </div>
   );
-}
+};
 
-export default MyStore
+export default MyStore;
