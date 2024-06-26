@@ -14,6 +14,7 @@ import ProductPage from './pages/ProductPage/ProductPage'
 import CreateProduct from './components/CreateProducte/CreateProduct';
 import MyAccount from './components/MyAccount/MyAccount';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import SendIdentityCard from './components/SendIdentityCard/SendIdentityCard';
 
 
 
@@ -34,7 +35,9 @@ function App() {
       <Route path='create-product' element={<CreateProduct />} />
       <Route path="/MyStore" element={<ProtectedRoute element={MyStore} />} />
       <Route path="/my-account" element={<ProtectedRoute element={MyAccount} />} />
+      <Route path="/send-identity-card" element={<ProtectedRoute element={SendIdentityCard} />} />
 
+            
       </Route>
     </Routes>
     </BrowserRouter>
