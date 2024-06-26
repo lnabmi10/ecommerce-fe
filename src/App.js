@@ -26,14 +26,13 @@ function App() {
       <Route index element={<Home/>} />
       <Route path='about' element={<About/>} />
       <Route path='contact' element={<Contact/>}  />
-      <Route path='mystore' element={<MyStore/>}  />
       <Route path='sellershop' element={<SellerShop/>}  />
       <Route path='login' element={<Login/>} />
       <Route path='register' element={<Register/>} />
       <Route path='allshopproduct' element={ <AllShopProduct/> } />
       <Route path="product/:id" element={<ProductPage/>} />
       <Route path='create-product' element={<CreateProduct />} />
-  
+      <Route path="/MyStore" element={<ProtectedRoute element={MyStore} />} />
       <Route path="/my-account" element={<ProtectedRoute element={MyAccount} />} />
 
       </Route>

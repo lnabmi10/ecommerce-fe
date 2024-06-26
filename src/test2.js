@@ -1,5 +1,4 @@
 
-
 function MyStore() {
 
     const [user, setUser] = useState(null);
