@@ -10,6 +10,7 @@ const MyStore = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [hasShop, setHasShop] = useState(false); 
+  const [shopId, setShopId] = useState(""); 
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -30,6 +31,7 @@ const MyStore = () => {
           });
           const hasShopData = await shopResponse.json();
           setHasShop(hasShopData.hasShop);
+          setShopId(hasShopData.shopId)
           
           } catch (error) {
             console.error(error);
@@ -42,13 +44,11 @@ const MyStore = () => {
   }, [navigate]);
 
 
-  console.log("user",user)
-
   return (
     <div>
       <h2>My Store</h2>
       {hasShop ? (
-        <TheShop userId={user._id} />
+        <TheShop userId={user._id} shopId={shopId} />
       ) : (
         <BecomeSeller  />
       )}

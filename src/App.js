@@ -30,9 +30,9 @@ function App() {
       <Route path='sellershop' element={<SellerShop/>}  />
       <Route path='login' element={<Login/>} />
       <Route path='register' element={<Register/>} />
-      <Route path='allshopproduct' element={ <AllShopProduct/> } />
+      <Route path='allshopproduct/:shopId' element={ <AllShopProduct/> } />
       <Route path="product/:id" element={<ProductPage/>} />
-      <Route path='create-product' element={<CreateProduct />} />
+      <Route path='create-product/:shopId' element={<CreateProduct />} />
       <Route path="/MyStore" element={<ProtectedRoute element={MyStore} />} />
       <Route path="/my-account" element={<ProtectedRoute element={MyAccount} />} />
       <Route path="/send-identity-card" element={<ProtectedRoute element={SendIdentityCard} />} />

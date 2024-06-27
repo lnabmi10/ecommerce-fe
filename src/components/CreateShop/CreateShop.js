@@ -13,7 +13,7 @@ const CreateShop = () => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        name: storeName.value,
+        shopName: storeName.value,
         description: storeDescription.value,
         brand: storeBrand.value,
         category: storeCategory.value,

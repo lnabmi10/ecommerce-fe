@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import getAuthHeaders from '../../auth';
 
-function CreateProduct({ shopId }) {
+function CreateProduct() {
     const [title, setTitle] = useState('');
     const [brand, setBrand] = useState('');
     const [quantity, setQuantity] = useState('');
@@ -11,7 +11,10 @@ function CreateProduct({ shopId }) {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [error, setError] = useState('');
+    const { shopId } = useParams();
     const navigate = useNavigate();
+
+console.log("shopid from params create product",shopId)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,7 +40,7 @@ function CreateProduct({ shopId }) {
             });
 
             if (response.ok) {
-                navigate('/');
+                navigate(`/allshopproduct/${shopId}`);
             } else {
                 const data = await response.json();
                 setError(data.message || 'Failed to create product');

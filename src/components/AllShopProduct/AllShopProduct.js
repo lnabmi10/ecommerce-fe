@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import getAuthHeaders from '../../auth';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState  } from 'react';
 
 function AllShopProduct() {
     const [allproducts, setAllproducts] = useState([]);
+    const { shopId } = useParams();
 
+    
     const fetchData = async () => {
-        const response = await fetch('http://localhost:3001/api/product/getallproducts', {
+        const response = await fetch(`http://localhost:3001/api/product/getallshopproducts/${shopId}`, {
             method: 'GET',
             headers: getAuthHeaders(),
         });
@@ -17,6 +19,7 @@ function AllShopProduct() {
     useEffect(() => {
         const getProducts = async () => {
             try {
+                console.log("shopid from params allproduct",shopId)
                 const data = await fetchData();
                 setAllproducts(data);
             } catch (error) {
@@ -42,7 +45,7 @@ function AllShopProduct() {
     return (
         <div className="container mt-5">
             <h1 className="mb-4">Product List</h1>
-            <Link to="/create-product" className="btn btn-primary mb-4">Create New Product</Link>
+            <Link to={`/create-product/${shopId}`} className="btn btn-primary mb-4">Create New Product</Link>
             <div className="list-group">
                 {allproducts.map((product) => (
                     <div key={product._id} className="list-group-item list-group-item-action">

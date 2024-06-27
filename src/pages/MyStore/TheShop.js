@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {Link,useNavigate ,NavLink} from 'react-router-dom'
 
 import style from './MyStore.module.css'
@@ -16,11 +16,44 @@ import { BsFillGearFill } from "react-icons/bs";
 import { BsQuestionCircle } from "react-icons/bs";
 import { BsStar } from "react-icons/bs";
 import { BsMegaphone } from "react-icons/bs";
-function TheShop({userId}) {
+
+function TheShop({userId,shopId}) {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
    
+  console.log(userId)
+  console.log(shopId)
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+
+  const [shopData, setShopData] = useState(null);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    const fetchShopData = async () => {
+      try {
+        const shopResponse = await fetch('http://localhost:3001/api/shop/getyourshop', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const result = await shopResponse.json();
+        setShopData(result);
+        console.log(result)
+      } catch (error) {
+        console.error(error);
+      
+      }  finally {
+        setLoading(false); 
+      }
+    }
+    fetchShopData()
+}, [navigate])
+
+   if (loading) {
+    return <div>Loading...</div>; // Show loading indicator while fetching data
+  }    // console.log("shopdata",shopData[0].shopName)
+      
+  
   return (
     <>
     <div className='container'>
@@ -78,8 +111,8 @@ function TheShop({userId}) {
 
                             </div>
                             <div className='col-4'>
-                                <div className='container shop-name'> <h2>mini Brahim</h2> </div>
-                                <div> <p> casablanca,derb ghalaf</p>  </div>
+                         <div className='container shop-name'> <h2>{shopData[0].shopName}</h2> </div>
+                          <div> <p> {shopData[0].description }</p>  </div>
                                 <div> 17 sales | 55 active listings </div>
                                 <div> <ReactStars
                                           count={5}
@@ -185,7 +218,7 @@ function TheShop({userId}) {
       
                       </div>
        
-                      <div className='col-2'> <Link to='/allshopproduct' className='text-dark'>View All Product</Link> </div>
+                      <div className='col-2'> <Link to={`/allshopproduct/${shopId}`} className='text-dark'>View All Product</Link> </div>
                </div>
 
               </div>
