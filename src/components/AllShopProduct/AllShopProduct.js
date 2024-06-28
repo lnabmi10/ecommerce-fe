@@ -57,6 +57,7 @@ function AllShopProduct() {
                         <p className="mb-1">Category: {product.category}</p>
                         <div className="d-flex justify-content-between">
                             <Link to={`/product/${product._id}`} className="btn btn-info btn-sm">View</Link>
+                            <Link to={`/add-images/${product._id}`} className="btn btn-info btn-sm">add image</Link>
                             <Link to={`/edit-product/${product._id}`} className="btn btn-warning btn-sm">Edit</Link>
                             <button onClick={() => handleDelete(product._id)} className="btn btn-danger btn-sm">Delete</button>
                         </div>

@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CreateShop = () => {
+  const navigate = useNavigate();
+
   const handleCreateShop = async (e) => {
     e.preventDefault();
     const { storeName, storeDescription, storeBrand, storeCategory } = e.target.elements;
@@ -22,7 +25,7 @@ const CreateShop = () => {
 
     if (response.ok) {
       alert('Store created successfully');
-      // Handle successful store creation (e.g., navigate to store page)
+      navigate('/MyStore');
     } else {
       alert('Failed to create store');
     }
