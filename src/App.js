@@ -16,6 +16,8 @@ import MyAccount from './components/MyAccount/MyAccount';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import SendIdentityCard from './components/SendIdentityCard/SendIdentityCard';
 import AddProductImages from './components/AddProductImages/AddProductImages';
+import EditProduct from './components/editProduct/EditProduct';
+import Messages from './components/Messages/Messages';
 
 
 
@@ -36,8 +38,11 @@ function App() {
       <Route path='create-product/:shopId' element={<CreateProduct />} />
       <Route path="/MyStore" element={<ProtectedRoute element={MyStore} />} />
       <Route path="/my-account" element={<ProtectedRoute element={MyAccount} />} />
+      <Route path="/messages/:shopId" element={<ProtectedRoute element={Messages} />} />
+      
       <Route path="/send-identity-card" element={<ProtectedRoute element={SendIdentityCard} />} />
       <Route path="/add-images/:productId" element={<AddProductImages/>} />
+      <Route path="/edit-product/:productId" element={<EditProduct/>} />
 
             
       </Route>

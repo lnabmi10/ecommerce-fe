@@ -60,18 +60,18 @@ function TheShop({userId,shopId}) {
       <div className='row'>
         <div className='col-2 '> 
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
+          <div className="container">
           
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav flex-column">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" href="#"><BsFillHouseDoorFill/> Dashboard</Link>
+                <Link className="nav-link active" aria-current="page" to={'/Mystore'}><BsFillHouseDoorFill/> Dashboard</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="#"><BsCardList/> Listings</Link>
+                <Link className="nav-link" to={`/allshopproduct/${shopId}`}><BsCardList/> Listings</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="#"> <BsChatSquareDots/> Messages</Link>
+                <Link className="nav-link" to={`/messages/${shopId}`} > <BsChatSquareDots/> Messages</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link " href="#" > <BsFileText/> Orders & Shipping</Link>
@@ -97,10 +97,10 @@ function TheShop({userId,shopId}) {
               
              
               
-            </ul>
-          </div>
-        </div>
-      </nav>
+               </ul>
+             </div>
+           </div>
+         </nav>
 
         
         </div>
@@ -206,7 +206,6 @@ function TheShop({userId,shopId}) {
                 <div className={style.orderCard}>
                   <div className={style.textf15}> All orders </div>
                 </div>
-
               </div>
 
               <div className='row py-4'>

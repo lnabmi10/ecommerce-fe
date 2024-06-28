@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from 'react';
-import {Link, useNavigate,useParams } from 'react-router-dom';
+import { Link,useParams,useNavigate } from 'react-router-dom';
 import getAuthHeaders from '../../auth';
+import React, { useEffect, useState  } from 'react';
 import style from '../../pages/MyStore/MyStore.module.css'
 import BreadCrumb from '../../components/BreadCrumb/BreadCrumb'
 import ReactStars from "react-rating-stars-component";
@@ -17,56 +17,76 @@ import { BsQuestionCircle } from "react-icons/bs";
 import { BsStar } from "react-icons/bs";
 import { BsMegaphone } from "react-icons/bs";
 
-function CreateProduct() {
-    const [title, setTitle] = useState('');
-    const [brand, setBrand] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [color, setColor] = useState('');
-    const [price, setPrice] = useState('');
-    const [description, setDescription] = useState('');
-    const [category, setCategory] = useState('');
-    const [error, setError] = useState('');
-    const { shopId } = useParams();
-    const navigate = useNavigate();
-    const [shopData, setShopData] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-console.log("shopid from params create product",shopId)
+const EditProduct = () => {
+     const token = localStorage.getItem('token');
+     const navigate = useNavigate();
+    const { productId } = useParams();
+    const [product, setProduct] = useState({
+        id : productId,
+        title: '',
+        description: '',
+        price: '',
+        category: '',
+        brand: '',
+        quantity: '',
+        sold: '',
+        color: ''
+    });
+
+    const [error, setError] = useState('');
+    const [shopData, setShopData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    
+    useEffect(() => {
+        // Fetch the existing product details
+        const fetchProduct = async () => {
+            try {
+                const response = await fetch(`http://localhost:3001/api/product/getoneproduct/${productId}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch product details');
+                }
+                const data = await response.json();
+                setProduct(data);
+            } catch (error) {
+                setError(error.message);
+            }
+        };
+
+        fetchProduct();
+    }, [productId]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setProduct({
+            ...product,
+            [name]: value
+        });
+        
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const newProduct = {
-            title,
-            brand,
-            quantity,
-            color,
-            price,
-            description,
-            category,
-        };
-
         try {
-            const response = await fetch(`http://localhost:3001/api/product/createproduct/${shopId}`, {
-                method: 'POST',
+            const response = await fetch(`http://localhost:3001/api/product/updateproduct/${productId}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    ...getAuthHeaders(),
+                    Authorization: `Bearer ${token}`
                 },
-                body: JSON.stringify(newProduct),
+                body: JSON.stringify(product)
             });
-
-            if (response.ok) {
-                navigate(`/allshopproduct/${shopId}`);
-            } else {
-                const data = await response.json();
-                setError(data.message || 'Failed to create product');
+            if (!response.ok) {
+                throw new Error('Failed to update product');
             }
+            const data = await response.json();
+            console.log('Product updated successfully:', data);
+            navigate(`/allshopproduct/${data.shop}`);
         } catch (error) {
-            setError('Failed to create product');
+            setError(error.message);
         }
     };
-   
+ 
   useEffect(() => {
     const token = localStorage.getItem('token');
 
@@ -103,13 +123,13 @@ console.log("shopid from params create product",shopId)
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav flex-column">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to={'/Mystore'}><BsFillHouseDoorFill/> Dashboard</Link>
+                                            <Link className="nav-link active" aria-current="page" to={'/Mystore'}><BsFillHouseDoorFill/> Dashboard</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={`/allshopproduct/${shopId}`}><BsCardList/> Listings</Link>
+                <Link className="nav-link" to={`/allshopproduct/${shopData.id}`}><BsCardList/> Listings</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={`/messages/${shopId}`}> <BsChatSquareDots/> Messages</Link>
+                <Link className="nav-link" to={`/messages/${shopData.id}`}> <BsChatSquareDots/> Messages</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link " href="#" > <BsFileText/> Orders & Shipping</Link>
@@ -171,87 +191,90 @@ console.log("shopid from params create product",shopId)
 
                            </div>
                         <div className='codeforyourpage' >
-                            <div className="container mt-5">
-            <h1>Create New Product</h1>
-            {error && <div className="alert alert-danger">{error}</div>}
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="title" className="form-label">Title</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
+                            <div className="container mt-4">
+            <h2>Edit Product</h2>
+            {error && <div className="alert alert-danger" role="alert">{error}</div>}
+            <form onSubmit={handleSubmit} className="bg-light p-4 rounded border">
+                <div className="form-group mb-3">
+                    <label>Title:</label>
+                    <input 
+                        type="text" 
+                        name="title" 
+                        value={product.title} 
+                        onChange={handleChange} 
+                        className="form-control" 
                     />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="brand" className="form-label">Brand</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="brand"
-                        value={brand}
-                        onChange={(e) => setBrand(e.target.value)}
-                        required
+                <div className="form-group mb-3">
+                    <label>Description:</label>
+                    <textarea 
+                        name="description" 
+                        value={product.description} 
+                        onChange={handleChange} 
+                        className="form-control" 
                     />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="quantity" className="form-label">Quantity</label>
-                    <input
-                        type="number"
-                        className="form-control"
-                        id="quantity"
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
-                        required
+                <div className="form-group mb-3">
+                    <label>Price:</label>
+                    <input 
+                        type="number" 
+                        name="price" 
+                        value={product.price} 
+                        onChange={handleChange} 
+                        className="form-control" 
                     />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="color" className="form-label">Color</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="color"
-                        value={color}
-                        onChange={(e) => setColor(e.target.value)}
-                        required
+                <div className="form-group mb-3">
+                    <label>Category:</label>
+                    <input 
+                        type="text" 
+                        name="category" 
+                        value={product.category} 
+                        onChange={handleChange} 
+                        className="form-control" 
                     />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="price" className="form-label">Price</label>
-                    <input
-                        type="number"
-                        className="form-control"
-                        id="price"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        required
+                <div className="form-group mb-3">
+                    <label>Brand:</label>
+                    <input 
+                        type="text" 
+                        name="brand" 
+                        value={product.brand} 
+                        onChange={handleChange} 
+                        className="form-control" 
                     />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="description" className="form-label">Description</label>
-                    <textarea
-                        className="form-control"
-                        id="description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    ></textarea>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="category" className="form-label">Category</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="category"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                        required
+                <div className="form-group mb-3">
+                    <label>Quantity:</label>
+                    <input 
+                        type="number" 
+                        name="quantity" 
+                        value={product.quantity} 
+                        onChange={handleChange} 
+                        className="form-control" 
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Create Product</button>
+                <div className="form-group mb-3">
+                    <label>Sold:</label>
+                    <input 
+                        type="number" 
+                        name="sold" 
+                        value={product.sold} 
+                        onChange={handleChange} 
+                        className="form-control" 
+                    />
+                </div>
+                <div className="form-group mb-3">
+                    <label>Color:</label>
+                    <input 
+                        type="text" 
+                        name="color" 
+                        value={product.color} 
+                        onChange={handleChange} 
+                        className="form-control" 
+                    />
+                </div>
+                <button type="submit" className="btn btn-warning">Update Product</button>
             </form>
         </div>
                           
@@ -262,10 +285,8 @@ console.log("shopid from params create product",shopId)
 
       </div>
     </>
-
-
         
     );
-}
+};
 
-export default CreateProduct;
+export default EditProduct;

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams,Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import getAuthHeaders from '../../auth';
+
 
 const AddProductImages = () => {
     const token = localStorage.getItem('token');
@@ -18,7 +20,8 @@ const AddProductImages = () => {
     try {
       const response = await fetch(`http://localhost:3001/api/product/upload/${productId}`, {
         method: 'PUT',
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { 'Content-Type': 'application/json',
+                    ...getAuthHeaders(), },
         body: formData,
       });
 

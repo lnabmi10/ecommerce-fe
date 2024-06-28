@@ -46,7 +46,7 @@ const MyStore = () => {
 
   return (
     <div>
-      <h2>My Store</h2>
+      
       {hasShop ? (
         <TheShop userId={user._id} shopId={shopId} />
       ) : (
