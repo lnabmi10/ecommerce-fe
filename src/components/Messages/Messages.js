@@ -125,7 +125,7 @@ function Messages() {
                             </div>
                             <div className='col-4'></div>
                             <div className='col-2'>
-                              <Link className='text-dark' to='/'> <strong>minibrahim.sijilmassa.com</strong> </Link>
+                              <Link className='text-dark' to={`/myshopdata/${shopData[0]._id}`}> <strong>{shopData[0].shopName}.sijilmassa.com</strong> </Link>
                             </div>
 
                            </div>

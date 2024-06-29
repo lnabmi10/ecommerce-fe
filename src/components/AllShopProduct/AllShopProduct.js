@@ -157,7 +157,7 @@ const [shopData, setShopData] = useState(null);
                             </div>
                             <div className='col-4'></div>
                             <div className='col-2'>
-                              <Link className='text-dark' to='/'> <strong>minibrahim.sijilmassa.com</strong> </Link>
+                              <Link className='text-dark' to={`/myshopdata/${shopId}`}> <strong>{shopData[0].shopName}.sijilmassa.com</strong> </Link>
                             </div>
 
                            </div>
@@ -165,24 +165,45 @@ const [shopData, setShopData] = useState(null);
                             <div className="container mt-5">
             <h1 className="mb-4">Product List</h1>
             <Link to={`/create-product/${shopId}`} className="btn btn-primary mb-4">Create New Product</Link>
-            <div className="list-group">
-                {allproducts.map((product) => (
-                    <div key={product._id} className="list-group-item list-group-item-action">
-                        <h5 className="mb-1">{product.title}</h5>
-                        <p className="mb-1">Slug: {product.slug}</p>
-                        <p className="mb-1">Price: {product.price}</p>
-                        <p className="mb-1">Description: {product.description}</p>
-                        <p className="mb-1">Sold: {product.sold}</p>
-                        <p className="mb-1">Category: {product.category}</p>
-                        <div className="d-flex justify-content-between">
-                            <Link to={`/product/${product._id}`} className="btn btn-info btn-sm">View</Link>
-                            <Link to={`/add-images/${product._id}`} className="btn btn-info btn-sm">add image</Link>
-                            <Link to={`/edit-product/${product._id}`} className="btn btn-warning btn-sm">Edit</Link>
-                            <button onClick={() => handleDelete(product._id)} className="btn btn-danger btn-sm">Delete</button>
+            <div className="row">
+            {allproducts.map((product) => (
+                <div key={product._id} className="col-12 col-md-6 col-lg-4 mb-4">
+                    <div className={`card ${style.productCardStyle}`}>
+                        <div className={style.productContainerImg}>
+                            {product.images.length > 0 ? (
+                                <img
+                                    src={product.images[0].url}
+                                    alt="Product"
+                                    className={`${style.productImg1Style} card-img-top`}
+                                />
+                            ) : (
+                                <img
+                                    src="placeholder-image-url" // Add a placeholder image URL
+                                    alt="Product"
+                                    className={`${style.productImg1Style} card-img-top`}
+                                />
+                            )}
+                        </div>
+                        <div className="card-body text-center">
+                            <h5 className="card-title">{product.title}</h5>
+                            <p className="card-text">Slug: {product.slug}</p>
+                            <p className="card-text">Price: {product.price}</p>
+                            <p className="card-text">Description: {product.description}</p>
+                            <p className="card-text">Sold: {product.sold}</p>
+                            <p className="card-text">Category: {product.category}</p>
+                        </div>
+                        <div className={`card-footer ${style.productActionBar} text-center`}>
+                            <div className="btn-group">
+                                <Link to={`/product/${product._id}`} className="btn btn-info btn-sm">View</Link>
+                                <Link to={`/add-images/${product._id}`} className="btn btn-success btn-sm">Add Image</Link>
+                                <Link to={`/edit-product/${product._id}`} className="btn btn-warning btn-sm">Edit</Link>
+                                <button onClick={() => handleDelete(product._id)} className="btn btn-danger btn-sm">Delete</button>
+                            </div>
                         </div>
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
+        </div>
         </div>
    
                           
