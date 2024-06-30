@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from './MyShopData.module.css';
-import { Card, Button } from 'react-bootstrap';
+import { Card,Button } from 'react-bootstrap';
+//import Button from '../Button/Button';
+
+
 
 function MyShopData() {
     const { shopId } = useParams();
@@ -11,9 +14,11 @@ function MyShopData() {
     const [editingField, setEditingField] = useState(null);
     const [newFieldValue, setNewFieldValue] = useState('');
     const [photoUrl, setPhotoUrl] = useState('');
+    const [file, setFile] = useState(null);
+
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
 
         const fetchShopData = async () => {
             try {
@@ -67,6 +72,7 @@ function MyShopData() {
                 return [newData];
             });
             // Add API call to update the field in the backend
+            
             setEditingField(null);
             setNewFieldValue('');
         }
@@ -76,16 +82,41 @@ function MyShopData() {
         setEditingField('photo');
     };
 
-    const handleSavePhoto = () => {
-        if (photoUrl !== '') {
+    const  handleSavePhoto = async (e) => {
+        /*if (photoUrl !== '') {
             setShopData((prevData) => {
                 const newData = { ...prevData[0], photo: photoUrl };
                 return [newData];
-            });
+            });*/
             // Add API call to add the photo to the backend
-            setEditingField(null);
-            setPhotoUrl('');
-        }
+
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('images', file);
+
+            try {
+                const response = await fetch(`http://localhost:3001/api/shop/addimageshop/${shopId}`, {
+                    method: 'PUT',
+                    body: formData,
+                    headers:{ Authorization: `Bearer ${token}`},
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Failed to upload image');
+                }
+    
+                const data = await response.json();
+                console.log('Upload successful:', data);
+           setEditingField(null);
+
+            
+            } catch (error) {
+                
+                console.error('Error uploading image:', error);
+            }
+           // console.log(photoUrl)
+          //  setPhotoUrl('');
+        
     };
 
     if (loading) {
@@ -96,7 +127,14 @@ function MyShopData() {
         return <div>No shop data available.</div>;
     }
 
-    const { shopName, description, category, brand, photo } = shopData[0];
+    const { shopName, description,  category, brand, images } = shopData[0];
+
+    let photo ;
+    if(images.length>0){
+        photo = images[images.length - 1].url
+
+    }
+
 
     return (
         <div className="container">
@@ -215,10 +253,11 @@ function MyShopData() {
                         {editingField === 'photo' && (
                             <div className={styles.editInput}>
                                 <input
-                                    type="text"
+                                    id="formFile"
+                                    type="file"
                                     value={photoUrl}
-                                    onChange={(e) => setPhotoUrl(e.target.value)}
-                                    placeholder="Enter photo URL"
+                                    onChange={(e) => setFile(e.target.files[0])}
+                                    placeholder="upload your photo"
                                 />
                                 <Button variant="success" onClick={handleSavePhoto}>
                                     Save Photo
@@ -249,7 +288,7 @@ function MyShopData() {
             </div>
         </div>
     );
-}
 
+}
 export default MyShopData;
 

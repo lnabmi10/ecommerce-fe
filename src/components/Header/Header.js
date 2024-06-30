@@ -92,9 +92,12 @@ const Header = () => {
                       <img src={menuSvg} /> <span>categories</span>  
                      </button>
                      <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                          <li><Link className="dropdown-item text-white" to="#">Action</Link></li>
-                                          <li><Link className="dropdown-item text-white" to="#">Another action</Link></li>
-                                          <li><Link className="dropdown-item text-white" to="#">Something else here</Link></li>
+                                          <li><Link className="dropdown-item text-white" to="#">Clothes</Link></li>
+                                          <li><Link className="dropdown-item text-white" to="#">Phones</Link></li>
+                                          <li><Link className="dropdown-item text-white" to="#">jewelry</Link></li>
+                                          <li><Link className="dropdown-item text-white" to="#">Bags</Link></li>
+                                          <li><Link className="dropdown-item text-white" to="#">Foods</Link></li>
+                                          <li><Link className="dropdown-item text-white" to="#">SmartTV</Link></li>
                      </ul>
               </div>
                 

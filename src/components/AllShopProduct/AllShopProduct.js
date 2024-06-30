@@ -49,7 +49,7 @@ const [shopData, setShopData] = useState(null);
 
     const handleDelete = async (id) => {
         try {
-            await fetch(`http://localhost:3001/api/product/delete/${id}`, {
+            await fetch(`http://localhost:3001/api/product/deleteproduct/${id}`, {
                 method: 'DELETE',
                 headers: getAuthHeaders(),
             });
@@ -83,6 +83,14 @@ const [shopData, setShopData] = useState(null);
     if (loading) {
     return <div>Loading...</div>; // Show loading indicator while fetching data
   }
+  let thShopImg ; 
+  if(shopData[0].images.length>1)
+  {
+    const imgesArray = shopData[0].images
+    thShopImg = imgesArray[imgesArray.length - 1].url;
+
+    }
+
     return (
         <>
     <div className='container'>
@@ -136,7 +144,7 @@ const [shopData, setShopData] = useState(null);
         <div className='col-10'>
               <div className='row py-4'>
                             <div className='col-2'>
-                                <img src={minibrahinImg} className={style.shopImg} alt='' />
+                                <img src={thShopImg} className={style.shopImg} alt='' />
 
                             </div>
                             <div className='col-4'>

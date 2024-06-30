@@ -40,7 +40,7 @@ function App() {
       <Route path="/MyStore" element={<ProtectedRoute element={MyStore} />} />
       <Route path="/my-account" element={<ProtectedRoute element={MyAccount} />} />
       <Route path="/messages/:shopId" element={<ProtectedRoute element={Messages} />} />
-      
+      <Route path="/add-images/:productId" element={<AddProductImages/>} />
       <Route path="/send-identity-card" element={<ProtectedRoute element={SendIdentityCard} />} />
       <Route path="/send-identity-card" element={<ProtectedRoute element={SendIdentityCard} />} />
       <Route path="/myshopdata/:shopId" element={<ProtectedRoute element={MyShopData} />} />

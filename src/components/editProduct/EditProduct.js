@@ -112,6 +112,14 @@ const EditProduct = () => {
     if (loading) {
     return <div>Loading...</div>; // Show loading indicator while fetching data
   }
+  let thShopImg ; 
+  if(shopData[0].images.length>1)
+  {
+    const imgesArray = shopData[0].images
+    thShopImg = imgesArray[imgesArray.length - 1].url;
+
+    }
+
     return (
         <>
     <div className='container'>
@@ -165,7 +173,7 @@ const EditProduct = () => {
         <div className='col-10'>
               <div className='row py-4'>
                             <div className='col-2'>
-                                <img src={minibrahinImg} className={style.shopImg} alt='' />
+                                <img src={thShopImg} className={style.shopImg} alt='' />
 
                             </div>
                             <div className='col-4'>
