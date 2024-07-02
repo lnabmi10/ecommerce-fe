@@ -1,5 +1,3 @@
-// src/components/ProductList.js
-
 import React, { useState, useEffect } from 'react';
 import AllProductCard from '../AllProductCard/AllProductCard';
 
@@ -12,6 +10,7 @@ const ProductList = () => {
   const [maxPrice, setMaxPrice] = useState('');
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+
   useEffect(() => {
     fetchProducts();
   }, [sort, minPrice, maxPrice, page, limit]);
@@ -24,13 +23,13 @@ const ProductList = () => {
         sort,
         limit,
         page,
-        ...minPrice && { price: { ...queryObj.price, gte: minPrice } },
-        ...maxPrice && { price: { ...queryObj.price, lte: maxPrice } }
+        ...(minPrice && { price: { ...queryObj?.price, gte: minPrice } }),
+        ...(maxPrice && { price: { ...queryObj?.price, lte: maxPrice } }),
       };
 
       const queryStr = new URLSearchParams(queryObj).toString();
 
-      const response = await fetch(`http://localhost:3001/api/product/getallproducts`);
+      const response = await fetch(`http://localhost:3001/api/product/getallproducts?${queryStr}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -118,10 +117,13 @@ const ProductList = () => {
           <div className="row">
             {products.map((product) => (
               <div className="col-md-3 col-sm-6 mb-4" key={product._id}>
-                
-            
-           <AllProductCard productImg={product.images[0] ? product.images[0].url : ''} secondaryImg={product.images[1] ? product.images[1].url : ''} productBrand={product.brand} productTitle={product.title} productPrice={product.price} />
-                 
+                <AllProductCard 
+                  productImg={product.images[0] ? product.images[0].url : ''} 
+                  secondaryImg={product.images[1] ? product.images[1].url : ''} 
+                  productBrand={product.brand} 
+                  productTitle={product.title} 
+                  productPrice={product.price} 
+                />
               </div>
             ))}
           </div>
@@ -147,3 +149,4 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
