@@ -7,17 +7,26 @@ import compareImg from '../../images/images/prodcompare.svg';
 import wishlistImg from '../../images/images/wish.svg';
 import { Link } from 'react-router-dom';
 
-function AllProductCard({ productImg, productTitle, productBrand, productPrice, secondaryImg }) {
+function AllProductCard({ productImg, productTitle, productBrand, productPrice, secondaryImg,productId, onAddToCart, onAddToWishlist  }) {
+    const token = localStorage.getItem('token');
+const handleWishlistClick = (e) => {
+    e.preventDefault(); 
+    onAddToWishlist(productId);
+  };
     const ratingChanged = (newRating) => {
         console.log(newRating);
     };
+ const handleCartClick = (e) => {
+    e.preventDefault(); 
+    onAddToCart(productId);
+  };
 
     return (
         <div className="">
             <div className={`card ${style.productCardStyle}`}>
                 <div className="position-relative">
                     <div className={`${style.wishlistIconDiv} position-absolute top-0 end-0 m-2`}>
-                        <Link to="#">
+                        <Link to="#" onClick={handleWishlistClick} >
                             <img src={wishlistImg} alt="wishlist icon" />
                         </Link>
                     </div>
@@ -41,7 +50,7 @@ function AllProductCard({ productImg, productTitle, productBrand, productPrice, 
                 </div>
                 <div className={`${style.productActionBar} position-absolute bottom-0 start-0 w-100 p-2`}>
                     <div className="d-flex justify-content-around">
-                        <Link to="#"><img src={addCartImg} alt="Add to Cart" /></Link>
+                        <Link to="#" onClick={handleCartClick}><img src={addCartImg} alt="Add to Cart" /></Link>
                         <Link to="#"><img src={viewImg} alt="View" /></Link>
                         <Link to="#"><img src={compareImg} alt="Compare" /></Link>
                     </div>

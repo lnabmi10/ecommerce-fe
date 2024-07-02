@@ -10,11 +10,61 @@ const ProductList = () => {
   const [maxPrice, setMaxPrice] = useState('');
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     fetchProducts();
   }, [sort, minPrice, maxPrice, page, limit]);
 
+  const handleAddToCart = async (productId) => {
+    try {
+      const prodCart = { prodId: productId, count: 1, color: 'default' }; // Customize as needed
+      const response = await fetch('http://localhost:3001/api/cart/addtocart', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+           Authorization: `Bearer ${token}` 
+
+        },
+        body: JSON.stringify(prodCart),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to add to cart');
+      }
+
+      const result = await response.json();
+      console.log('Added to cart:', result);
+      // Update your state or notify the user here
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      // Handle the error (e.g., show a notification to the user)
+    }
+  };
+
+    const handleAddToWishlist = async (productId) => {
+        try {
+            const response = await fetch('http://localhost:3001/api/product/addproducttowishlist', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                     Authorization: `Bearer ${token}` 
+                },
+                body: JSON.stringify({ prodId: productId }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add to wishlist');
+            }
+
+            const result = await response.json();
+            console.log('Added to wishlist:', result);
+            // Update your state or notify the user here
+        } catch (error) {
+            console.error('Error adding to wishlist:', error);
+            // Handle the error (e.g., show a notification to the user)
+        }
+    }
   const fetchProducts = async () => {
     setLoading(true);
     setError(null);
@@ -123,6 +173,9 @@ const ProductList = () => {
                   productBrand={product.brand} 
                   productTitle={product.title} 
                   productPrice={product.price} 
+                  onAddToWishlist={handleAddToWishlist}
+                  onAddToCart={handleAddToCart}
+                  productId={product._id}
                 />
               </div>
             ))}

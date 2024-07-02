@@ -20,6 +20,8 @@ import EditProduct from './components/editProduct/EditProduct';
 import Messages from './components/Messages/Messages';
 import MyShopData from './components/MyShopData/MyShopData';
 import ProductList from './components/ProductList/ProductList';
+import Wishlist from './components/Wishlist/Wishlist';
+import Cart from './components/Cart/Cart';
 
 
 
@@ -46,7 +48,9 @@ function App() {
       <Route path="/send-identity-card" element={<ProtectedRoute element={SendIdentityCard} />} />
       <Route path="/myshopdata/:shopId" element={<ProtectedRoute element={MyShopData} />} />
       <Route path="/edit-product/:productId" element={<EditProduct/>} />
-      <Route path="/list-product" element={<ProductList/>} />
+      <Route path="/list-product" element={<ProductList />} />
+      <Route path="/wishlist" element={<ProtectedRoute element={Wishlist} />} />
+      <Route path="/cart" element={<ProtectedRoute element={Cart} />} />
 
 
             
