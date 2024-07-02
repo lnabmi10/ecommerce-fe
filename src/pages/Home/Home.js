@@ -59,7 +59,7 @@ function Home() {
               <h4>MACBOOK FOR PROGRAMMING</h4>
               <h5>MacBook pro 14 </h5>
               <p>From $1499.00 or $74.95/mo.</p>
-              <Button to=''>buy now</Button>
+              <Button to='/list-product'>buy now</Button>
 
               </div>
             </div>

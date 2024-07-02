@@ -19,6 +19,7 @@ import AddProductImages from './components/AddProductImages/AddProductImages';
 import EditProduct from './components/editProduct/EditProduct';
 import Messages from './components/Messages/Messages';
 import MyShopData from './components/MyShopData/MyShopData';
+import ProductList from './components/ProductList/ProductList';
 
 
 
@@ -45,6 +46,8 @@ function App() {
       <Route path="/send-identity-card" element={<ProtectedRoute element={SendIdentityCard} />} />
       <Route path="/myshopdata/:shopId" element={<ProtectedRoute element={MyShopData} />} />
       <Route path="/edit-product/:productId" element={<EditProduct/>} />
+      <Route path="/list-product" element={<ProductList/>} />
+
 
             
       </Route>

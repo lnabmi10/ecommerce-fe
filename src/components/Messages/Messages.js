@@ -50,7 +50,13 @@ function Messages() {
     if (loading) {
     return <div>Loading...</div>; // Show loading indicator while fetching data
   }    // console.log("shopdata",shopData[0].shopName)
-    
+  let thShopImg ; 
+  if(shopData[0].images.length>0)
+  {
+    const imgesArray = shopData[0].images
+    thShopImg = imgesArray[imgesArray.length - 1].url;
+
+    }
   return (
     <>
     <div className='container'>
@@ -104,7 +110,7 @@ function Messages() {
         <div className='col-10'>
               <div className='row py-4'>
                             <div className='col-2'>
-                                <img src={minibrahinImg} className={style.shopImg} alt='' />
+                                <img src={thShopImg} className={style.shopImg} alt='' />
 
                             </div>
                             <div className='col-4'>

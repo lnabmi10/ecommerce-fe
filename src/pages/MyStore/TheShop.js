@@ -52,11 +52,15 @@ function TheShop({userId,shopId}) {
    if (loading) {
     return <div>Loading...</div>; // Show loading indicator while fetching data
   }    // console.log("shopdata",shopData[0].shopName)
-   let thShopImg ; 
-  if(shopData[0].images.length>1)
+  let thShopImg ; 
+  
+  if(shopData[0].images.length>0)
   {
-    const imgesArray = shopData[0].images
-    thShopImg = imgesArray[imgesArray.length - 1].url;
+    console.log(shopData[0].images.length)
+    const imagesArray = shopData[0].images
+    console.log(imagesArray)
+    thShopImg = imagesArray[imagesArray.length - 1].url;
+    console.log(thShopImg)
 
     }
 

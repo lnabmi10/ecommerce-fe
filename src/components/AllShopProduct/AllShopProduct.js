@@ -84,10 +84,14 @@ const [shopData, setShopData] = useState(null);
     return <div>Loading...</div>; // Show loading indicator while fetching data
   }
   let thShopImg ; 
-  if(shopData[0].images.length>1)
+  
+  if(shopData[0].images.length>0)
   {
-    const imgesArray = shopData[0].images
-    thShopImg = imgesArray[imgesArray.length - 1].url;
+    console.log(shopData[0].images.length)
+    const imagesArray = shopData[0].images
+    console.log(imagesArray)
+    thShopImg = imagesArray[imagesArray.length - 1].url;
+    console.log(thShopImg)
 
     }
 
